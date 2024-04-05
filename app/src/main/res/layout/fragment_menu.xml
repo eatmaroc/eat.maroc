@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#D50000"
+    tools:context=".Menu">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ImageView
+        android:id="@+id/imgeat"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_weight="1"
+        android:src="@drawable/eat" />
+
+        <Space
+            android:layout_width="274dp"
+            android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/imgmenu"
+        android:layout_width="47dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/baseline_density_medium_24" />
+    </LinearLayout>
+

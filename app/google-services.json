@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649781981391",
+    "project_id": "eatma-c7fa5",
+    "storage_bucket": "eatma-c7fa5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649781981391:android:302a761536bccdb98587ba",
+        "android_client_info": {
+          "package_name": "com.example.eatma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEunIvv593dbUq2YvoFFUFiKQTFHONhnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
