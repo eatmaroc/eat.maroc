@@ -144,13 +144,16 @@ public class AddVilleAndCartier extends AppCompatActivity {
         }
 
         DatabaseReference villeRef = databaseReference.child(selectedVille);
+        // Removed push() to prevent generating random key
         Cartier cartier = new Cartier(quartierName);
-        DatabaseReference quartierRef = villeRef.child("quartiers").push();
+        // Use the quartier name as the key
+        DatabaseReference quartierRef = villeRef.child("quartiers").child(quartierName);
         quartierRef.setValue(cartier);
 
         Toast.makeText(AddVilleAndCartier.this, "Quartier added successfully!", Toast.LENGTH_SHORT).show();
         quartierText.setText("");
     }
+
 
 
 }
