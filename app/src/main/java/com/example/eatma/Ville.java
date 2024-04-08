@@ -3,17 +3,24 @@ package com.example.eatma;
 
 
 public class Ville {
-    String ville;
+    String villeName;
+
+    public Ville() {
+    }
+
     public Ville(String villeName) {
-        this.ville=villeName;
+
+        this.villeName =villeName;
     }
 
-    public String getVille() {
-        return ville;
+    public String getVilleName() {
+
+        return villeName;
     }
 
-    public void setVille(String ville) {
-        this.ville = ville;
+    public void setVilleName(String villeName) {
+
+        this.villeName = villeName;
     }
 
 }
