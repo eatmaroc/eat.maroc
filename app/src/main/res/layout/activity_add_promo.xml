@@ -14,16 +14,17 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="16dp">
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="16dp" />
+                android:layout_height="wrap_content" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -35,8 +36,8 @@
                 android:layout_height="16dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="380dp"
+                android:layout_height="53dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -48,37 +49,41 @@
 
                 <EditText
                     android:id="@+id/titreInpute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="@drawable/cader"
                     android:ems="10"
-                    android:hint="Donner le titre"
+                    android:hint=" Donner le titre"
                     android:inputType="text" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="53dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView9"
-                    android:layout_width="125dp"
+                    android:layout_width="46dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="Type" />
 
                 <EditText
                     android:id="@+id/typeInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="323dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cader"
                     android:ems="10"
-                    android:hint="Donner le type"
+                    android:hint=" Donner le type"
                     android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="380dp"
+                android:layout_height="64dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -90,17 +95,19 @@
 
                 <EditText
                     android:id="@+id/prixInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="292dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="@drawable/cader"
                     android:ems="10"
-                    android:hint="Donner le prix"
-                    android:inputType="text" />
+                    android:hint=" Donner le prix"
+                    android:inputType="number|numberDecimal|numberSigned" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -126,32 +133,44 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <LinearLayout
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="17dp" />
+
+            <LinearLayout
+                android:layout_width="380dp"
+                android:layout_height="53dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
+                    android:layout_width="76dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Whatsapp" />
 
+
                 <EditText
                     android:id="@+id/numeroInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="321dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="@drawable/cader"
                     android:ems="10"
-                    android:hint="Numero"
+                    android:hint=" Numero"
                     android:inputType="text" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
+
 
                 <TextView
                     android:id="@+id/textView12"
@@ -163,18 +182,26 @@
 
                 <EditText
                     android:id="@+id/descriptionInput"
-                    android:layout_width="wrap_content"
-                    android:layout_height="166dp"
+                    android:layout_width="241dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/cader"
                     android:ems="10"
                     android:gravity="top"
-                    android:hint="Add description.."
-                    android:inputType="text" />
+                    android:hint=" Add description.."
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:minLines="3"
+                    android:scrollbars="vertical" />
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="26dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="86dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -188,18 +215,23 @@
                 <EditText
                     android:id="@+id/adressInput"
                     android:layout_width="wrap_content"
-                    android:layout_height="166dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/cader"
                     android:ems="10"
                     android:gravity="top"
-                    android:hint="Donner adress"
-                    android:inputType="text" />
+                    android:hint=" Donner adress"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:minLines="3"
+                    android:scrollbars="vertical" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnAjouterProme"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/radio_button_text_color"
                 android:text="Ajouter" />
 
         </LinearLayout>
