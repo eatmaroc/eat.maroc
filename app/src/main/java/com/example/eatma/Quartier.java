@@ -1,6 +1,6 @@
 package com.example.eatma;
 
-public class Cartier {
+public class Quartier {
 
    private String cartier;
 
@@ -12,7 +12,7 @@ public class Cartier {
         this.cartier = cartier;
     }
 
-    public Cartier(String cartier) {
+    public Quartier(String cartier) {
         this.cartier = cartier;
     }
 }
