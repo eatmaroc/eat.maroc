@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,9 +33,11 @@ public class AddVilleAndCartier extends AppCompatActivity {
     ImageButton btnBack;
     EditText villeText, quartierText;
     RadioButton villeRadio, quartierRadio, suprimerville, suprimerquartier;
-    ArrayList<String> cityList,quartierList;
+    ArrayList<String> cityList, quartierList;
     Spinner spinner, spinnerSuprimmeville, spinnerSuprimquertierVILL, spinnerSuprimquertierQuartier;
     ArrayAdapter<String> adapter;
+    RadioGroup R1,R2;
+
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
@@ -42,7 +46,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
         setContentView(R.layout.activity_add_ville_and_cartier);
 
         // Initialize views
-        btnBack = findViewById(R.id.btnBackAddVille);
+//        btnBack = findViewById(R.id.btnBackAddVille);
         btnOk = findViewById(R.id.btnOkAddVille);
         villeText = findViewById(R.id.villeAddVille);
         quartierText = findViewById(R.id.quartierAddVille);
@@ -58,7 +62,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
 
         villeRadio.setChecked(true);
         cityList = new ArrayList<>();
-        quartierList=new ArrayList<>();
+        quartierList = new ArrayList<>();
 
         // Firebase reference
         databaseReference = FirebaseDatabase.getInstance().getReference().child("villes");
@@ -67,7 +71,6 @@ public class AddVilleAndCartier extends AppCompatActivity {
         fetchVilles();
         // Button click listeners
         suprimerville.setChecked(true);
-
 
 
         btnBack.setOnClickListener(v -> finish());
@@ -115,7 +118,6 @@ public class AddVilleAndCartier extends AppCompatActivity {
                 spinnerSuprimquertierVILL.setAdapter(adapter);
 
 
-
             }
         });
         spinnerSuprimquertierVILL.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -151,7 +153,8 @@ public class AddVilleAndCartier extends AppCompatActivity {
             }
         });
     }
-    private void fetchQuartier(String ville){
+
+    private void fetchQuartier(String ville) {
         DatabaseReference villeRef = databaseReference.child(ville).child("quartiers");
         villeRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -184,6 +187,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
         quartierAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSuprimquertierQuartier.setAdapter(quartierAdapter);
     }
+
     private void addVille() {
         String villeName = villeText.getText().toString();
         if (villeName.isEmpty()) {
@@ -219,7 +223,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
 
         DatabaseReference villeRef = databaseReference.child(selectedVille);
         // Removed push() to prevent generating random key
-        Cartier cartier = new Cartier(quartierName);
+        Quartier cartier = new Quartier(quartierName);
         // Use the quartier name as the key
         DatabaseReference quartierRef = villeRef.child("quartiers").child(quartierName);
         quartierRef.setValue(cartier);

@@ -26,12 +26,13 @@
             android:text="Ajouter ville" />
 
         <RadioGroup
+            android:id="@+id/radio1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvchoisirville"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -63,6 +64,7 @@
             android:orientation="vertical">
 
             <RadioGroup
+                android:id="@+id/radio2"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:orientation="horizontal">
@@ -128,15 +130,6 @@
             android:text="Ajouter" />
 
     </RadioGroup>
-
-    <ImageButton
-        android:id="@+id/btnBackAddVille"
-        android:layout_width="48dp"
-        android:layout_height="40dp"
-        android:background="@drawable/baseline_arrow_back_ios_24"
-
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="12dp" />
 
     <TextView
         android:id="@+id/textView6"
