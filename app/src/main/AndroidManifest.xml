@@ -25,7 +25,7 @@
             android:name=".MenuPage"
             android:exported="false" />
         <activity
-            android:name=".AddPromo"
+            android:name=".SplashActivity"
             android:exported="false" />
         <activity
             android:name=".AddVilleAndCartier"
@@ -37,7 +37,7 @@
             android:name=".loginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".AddPromo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
