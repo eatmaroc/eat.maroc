@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".AddVilleAndCartier">
 
     <RadioGroup
@@ -12,12 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="92dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <RadioButton
             android:id="@+id/radioVille"
@@ -36,17 +36,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Entre la ville:   " />
+                android:text="Entre la ville:   "
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/villeAddVille"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:background="@drawable/custom_shape"
+                android:background="@drawable/caderwhite"
                 android:hint="Ville"
                 android:inputType="text"
-                android:padding="8dp" />
+                android:padding="8dp"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
         </RadioGroup>
 
@@ -74,13 +77,14 @@
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Choisir la ville:  " />
+                    android:text="Choisir la ville:  "
+                    android:textColor="@color/white" />
 
                 <Spinner
                     android:id="@+id/villeSpinnerAddVille"
                     android:layout_width="132dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/custom_shape"
+                    android:background="@drawable/caderwhite"
 
                     />
 
@@ -109,7 +113,7 @@
                     android:layout_width="266dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/custom_shape"
+                    android:background="@drawable/caderwhite"
                     android:ems="10"
                     android:hint="Quartier"
                     android:inputType="text"
@@ -127,7 +131,10 @@
             android:id="@+id/btnOkAddVille"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ajouter" />
+            android:backgroundTint="@color/white"
+            android:text="Ajouter"
+            android:textColor="@color/lwiyen_l3ziz"
+            android:textSize="20sp" />
 
     </RadioGroup>
 
@@ -136,24 +143,24 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="#6750A3"
+        android:background="@color/white"
         android:gravity="center"
         android:text="ADD VILLE/QUARTIER"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#D50000"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
         android:gravity="center"
         android:text="SUPRIMER VILLE/QUARTIER"
+        android:textColor="@color/l7miyer_dyalna"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,34 +184,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Suprimer ville"
-            android:textColor="@color/radio_button_text_color" />
+            android:textColor="@color/black" />
 
         <Spinner
             android:id="@+id/spinnerVilleDelet"
             android:layout_width="132dp"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_shape" />
+            android:background="@drawable/caderwhite" />
 
         <RadioButton
             android:id="@+id/supressquartier"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Suprimer quartier"
-            android:textColor="@color/radio_button_text_color" />
+            android:textColor="@color/black" />
 
         <Spinner
             android:id="@+id/spinnervillequartierdelet"
             android:layout_width="132dp"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_shape"
-            />
+            android:background="@drawable/caderwhite" />
 
         <Spinner
             android:id="@+id/spinnerQuartierDelet"
             android:layout_width="132dp"
             android:layout_height="match_parent"
-            android:background="@drawable/custom_shape"
-            />
+            android:background="@drawable/caderwhite" />
 
     </RadioGroup>
 
@@ -215,8 +220,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="#FE0000"
+        android:backgroundTint="@color/white"
         android:text="SUPRIMER"
+        android:textColor="@color/l7miyer_dyalna"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

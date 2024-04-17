@@ -30,13 +30,11 @@ import java.util.Collections;
 public class AddVilleAndCartier extends AppCompatActivity {
     DatabaseReference databaseReference;
     Button btnOk, suprimer;
-    ImageButton btnBack;
     EditText villeText, quartierText;
     RadioButton villeRadio, quartierRadio, suprimerville, suprimerquartier;
     ArrayList<String> cityList, quartierList;
     Spinner spinner, spinnerSuprimmeville, spinnerSuprimquertierVILL, spinnerSuprimquertierQuartier;
     ArrayAdapter<String> adapter;
-    RadioGroup R1,R2;
 
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -46,7 +44,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
         setContentView(R.layout.activity_add_ville_and_cartier);
 
         // Initialize views
-//        btnBack = findViewById(R.id.btnBackAddVille);
+
         btnOk = findViewById(R.id.btnOkAddVille);
         villeText = findViewById(R.id.villeAddVille);
         quartierText = findViewById(R.id.quartierAddVille);
@@ -60,7 +58,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
         spinnerSuprimquertierVILL = findViewById(R.id.spinnervillequartierdelet);
         suprimer = findViewById(R.id.btnSuprimer);
 
-        villeRadio.setChecked(true);
+
         cityList = new ArrayList<>();
         quartierList = new ArrayList<>();
 
@@ -73,27 +71,10 @@ public class AddVilleAndCartier extends AppCompatActivity {
         suprimerville.setChecked(true);
 
 
-        btnBack.setOnClickListener(v -> finish());
-        suprimer.setOnClickListener(v -> {
-            if (suprimerville.isChecked()) {
-                String villeToDelete = spinnerSuprimmeville.getSelectedItem().toString();
-                deleteVille(villeToDelete);
-            } else if (suprimerquartier.isChecked()) {
-                // Delete quartier
-                String villeToDelete = spinnerSuprimquertierVILL.getSelectedItem().toString();
-                String quartierToDelete = spinnerSuprimquertierQuartier.getSelectedItem().toString();
-                deleteQuartier(villeToDelete, quartierToDelete);
-            }
-        });
 
 
-        btnOk.setOnClickListener(v -> {
-            if (villeRadio.isChecked()) {
-                addVille();
-            } else if (quartierRadio.isChecked()) {
-                addQuartier();
-            }
-        });
+
+
 
 
         // Radio button change listener
