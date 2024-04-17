@@ -32,133 +32,133 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 
 public class AddPromo extends AppCompatActivity {
-    EditText title, type, prix, whatsapp, description, adress;
-    DatabaseReference databaseReference;
-    Spinner spinnerVille, spinnerQuartier;
-            Button Ajouter;
-            ImageButton addpic;
-            StorageReference storageReference;
+        EditText title, type, prix, whatsapp, description, adress;
+        DatabaseReference databaseReference;
+        Spinner spinnerVille, spinnerQuartier;
+        Button Ajouter;
+        ImageButton addpic;
+        StorageReference storageReference;
 
         ArrayList<String> cityList,quartierList;
 
 
-            boolean isImageChosen = false; // Flag to indicate whether an image is chosen
-            Uri chosenImageUri; // Store the chosen image URI
+        boolean isImageChosen = false; // Flag to indicate whether an image is chosen
+        Uri chosenImageUri; // Store the chosen image URI
         Promo promo=new Promo();
 
-@SuppressLint({"MissingInflatedId", "WrongViewCast"})
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_add_promo);
-        title = findViewById(R.id.titreInpute);
-        type = findViewById(R.id.typeInput);
-        prix = findViewById(R.id.prixInput);
-        whatsapp = findViewById(R.id.numeroInput);
-        description = findViewById(R.id.descriptionInput);
-        adress = findViewById(R.id.adressInput);
-        spinnerVille = findViewById(R.id.spinner);
-        spinnerQuartier = findViewById(R.id.spinner2);
-        Ajouter = findViewById(R.id.btnAjouterProme);
-        addpic = findViewById(R.id.imgInput);
-        cityList=new ArrayList<>();
-        quartierList=new ArrayList<>();
+        @SuppressLint({"MissingInflatedId", "WrongViewCast"})
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                EdgeToEdge.enable(this);
+                setContentView(R.layout.activity_add_promo);
+                title = findViewById(R.id.titreInpute);
+                type = findViewById(R.id.typeInput);
+                prix = findViewById(R.id.prixInput);
+                whatsapp = findViewById(R.id.numeroInput);
+                description = findViewById(R.id.descriptionInput);
+                adress = findViewById(R.id.adressInput);
+                spinnerVille = findViewById(R.id.villeAdd);
+                spinnerQuartier = findViewById(R.id.quartierAdd);
+                Ajouter = findViewById(R.id.btnAjouterProme);
+                addpic = findViewById(R.id.imgInput);
+                cityList=new ArrayList<>();
+                quartierList=new ArrayList<>();
 
 
-        if (spinnerVille != null) {
-                spinnerVille.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                if (spinnerVille != null) {
+                        spinnerVille.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                        String selectedVille = cityList.get(position);
+                                        fetchQuartiers(selectedVille);
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+                                        // Logique en cas de sélection vide
+                                }
+                        });
+                } else {
+                        Toast.makeText(this, "Erreur lors de la récupération du Spinner Ville", Toast.LENGTH_SHORT).show();
+                }
+
+
+                storageReference = FirebaseStorage.getInstance().getReference();
+                databaseReference = FirebaseDatabase.getInstance().getReference().child("villes");
+
+                fetchVilles();
+
+
+
+
+
+                addpic.setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                String selectedVille = cityList.get(position);
-                                fetchQuartiers(selectedVille);
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-                                // Logique en cas de sélection vide
+                        public void onClick(View v) {
+                                openFileChooser();
                         }
                 });
-        } else {
-                Toast.makeText(this, "Erreur lors de la récupération du Spinner Ville", Toast.LENGTH_SHORT).show();
+
+                Ajouter.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                                if (isImageChosen) {
+
+                                        promo.setTitle(title.getText().toString());
+                                        promo.setType(type.getText().toString());
+                                        promo.setPrix(prix.getText().toString());
+                                        promo.setWhatsapp(whatsapp.getText().toString());
+                                        promo.setDescription(description.getText().toString());
+                                        promo.setAdress(adress.getText().toString());
+                                        promo.setVille(spinnerVille.getSelectedItem().toString());
+                                        promo.setQuartier(spinnerQuartier.getSelectedItem().toString());
+                                        uploadImage(chosenImageUri);
+
+                                } else {
+                                        Toast.makeText(AddPromo.this, "Veuillez sélectionner une image", Toast.LENGTH_SHORT).show();
+                                }
+                        }
+                });
         }
 
-
-        storageReference = FirebaseStorage.getInstance().getReference();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("villes");
-
-        fetchVilles();
-
-
-
-
-
-        addpic.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View v) {
-        openFileChooser();
-        }
-        });
-
-        Ajouter.setOnClickListener(new View.OnClickListener() {
-
-@Override
-public void onClick(View v) {
-        if (isImageChosen) {
-
-                promo.setTitle(title.getText().toString());
-                promo.setType(type.getText().toString());
-                promo.setPrix(prix.getText().toString());
-                promo.setWhatsapp(whatsapp.getText().toString());
-                promo.setDescription(description.getText().toString());
-                promo.setAdress(adress.getText().toString());
-                promo.setVille(spinnerVille.getSelectedItem().toString());
-                promo.setQuartier(spinnerQuartier.getSelectedItem().toString());
-                uploadImage(chosenImageUri);
-
-        } else {
-        Toast.makeText(AddPromo.this, "Veuillez sélectionner une image", Toast.LENGTH_SHORT).show();
-        }
-        }
-        });
+        private void openFileChooser() {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, 1);
         }
 
-private void openFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, 1);
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+                super.onActivityResult(requestCode, resultCode, data);
+                if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+                        chosenImageUri = data.getData();
+                        addpic.setImageURI(chosenImageUri); // Set ImageButton image to chosen image
+                        isImageChosen = true; // Set flag to true indicating image is chosen
+                }
         }
 
-@Override
-protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
-        chosenImageUri = data.getData();
-        addpic.setImageURI(chosenImageUri); // Set ImageButton image to chosen image
-        isImageChosen = true; // Set flag to true indicating image is chosen
-        }
-        }
+        private void uploadImage(Uri imageUri) {
+                StorageReference fileReference = storageReference.child("images/" + System.currentTimeMillis() + ".jpg");
 
-private void uploadImage(Uri imageUri) {
-        StorageReference fileReference = storageReference.child("images/" + System.currentTimeMillis() + ".jpg");
+                fileReference.putFile(imageUri)
+                        .addOnSuccessListener(taskSnapshot -> {
+                                Toast.makeText(AddPromo.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
+                                // You can get the URL of the uploaded image if needed
+                                fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                                        promo.setImage(uri.toString());
+                                        addpromo(promo);
 
-        fileReference.putFile(imageUri)
-        .addOnSuccessListener(taskSnapshot -> {
-        Toast.makeText(AddPromo.this, "Image uploaded successfully", Toast.LENGTH_SHORT).show();
-        // You can get the URL of the uploaded image if needed
-        fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-        promo.setImage(uri.toString());
-        addpromo(promo);
-
-        });
-        })
-        .addOnFailureListener(e -> {
-        Toast.makeText(AddPromo.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        });}
+                                });
+                        })
+                        .addOnFailureListener(e -> {
+                                Toast.makeText(AddPromo.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });}
 
 
-private void addpromo(Promo promo) {
+        private void addpromo(Promo promo) {
                 String selectedVille = promo.getVille();
                 String selectedQuartier = promo.getQuartier();
 
@@ -240,4 +240,3 @@ private void addpromo(Promo promo) {
 
 
 }
-
