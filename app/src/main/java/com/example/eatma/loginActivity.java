@@ -2,6 +2,7 @@ package com.example.eatma;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class loginActivity extends AppCompatActivity {
     password=findViewById(R.id.password);
     loginBtn=findViewById(R.id.loginBtn);
     firebaseAuth=FirebaseAuth.getInstance();
+    emailFocusListener();
 
     loginBtn.setOnClickListener( v->logIn());
     }
@@ -65,5 +67,25 @@ public class loginActivity extends AppCompatActivity {
         if (user!=null){
             startActivity(new Intent(this, adminHome.class));
         }
+    }
+
+    private void emailFocusListener() {
+        email.setOnFocusChangeListener((v, focused) -> {
+            if (!focused) {
+                String emailError = validEmail();
+                if (emailError != null) {
+                    email.setError(emailError);
+                }
+            }
+        });
+    }
+
+
+    private String validEmail() {
+        String emailText = email.getText().toString();
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
+            return "Invalid Email Address";
+        }
+        return null;
     }
 }

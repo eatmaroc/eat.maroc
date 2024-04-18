@@ -30,8 +30,10 @@ FirebaseAuth auth = FirebaseAuth.getInstance();
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (auth.getCurrentUser()==null){
-                    finish();
-                }
+                    Intent intent = new Intent(adminHome.this, loginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+             finish();                }
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {

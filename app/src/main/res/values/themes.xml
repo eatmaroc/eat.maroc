@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Eatma" parent="Base.Theme.Eatma" />
+
+    <style name="RadioButtonStyle" parent="Theme.AppCompat.Light">
+        <!-- color of radio button -->
+        <item name="colorAccent">@color/white</item>
+        <!-- default color of radio button -->
+        <item name="android:textColorPrimary">@android:color/darker_gray</item>
+
+    </style>
 </resources>
