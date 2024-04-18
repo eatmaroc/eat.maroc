@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".AjouterSupprimierType">
 
     <RadioGroup
@@ -22,34 +23,52 @@
             android:id="@+id/RBajouterType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ajouter Type" />
+            android:padding="16dp"
+            android:text="Ajouter Type"
+            android:textColor="@color/white"
+            android:theme="@style/RadioButtonStyle" />
 
         <RadioGroup
             android:id="@+id/groupAjouterType"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="32sp"
+
             android:orientation="vertical">
 
             <RadioGroup
-                android:layout_width="wrap_content"
+                android:layout_width="282dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Type:" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layouttype"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
 
-                <EditText
-                    android:id="@+id/inputAjouterType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:ems="10"
-                    android:hint="Type"
-                    android:inputType="text" />
+                    app:boxStrokeColor="@color/white"
+                    app:cursorColor="@color/white"
+                    app:endIconTint="@color/white"
+                    app:hintTextColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputAjouterType"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="50dp"
+                        android:cursorVisible="true"
+                        android:textColor="@color/white"
+                        android:ems="10"
+                        android:hint="Type"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </RadioGroup>
 
@@ -57,9 +76,13 @@
                 android:id="@+id/ajouterTypeBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="51dp"
-                android:text="Ajouter" />
+                android:backgroundTint="@color/white"
+                android:text="Ajouter"
+                android:textColor="@color/black" />
 
         </RadioGroup>
 
@@ -67,24 +90,36 @@
             android:id="@+id/RBsupprimierType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/RadioButtonStyle"
+            android:padding="16dp"
+            android:textColor="@color/white"
             android:text="Supprimier Type" />
 
         <RadioGroup
             android:id="@+id/groupSupprimierType"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Spinner
                 android:id="@+id/spinnerTypeAjouter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp" />
+                android:layout_width="139dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="32dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white" />
+
+            <Space
+                android:layout_width="45dp"
+                android:layout_height="match_parent"
+               />
 
             <Button
                 android:id="@+id/supprimierTypeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
                 android:text="Supprimier" />
         </RadioGroup>
 
