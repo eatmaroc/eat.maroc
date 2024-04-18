@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +37,12 @@ public class AddVilleAndCartier extends AppCompatActivity {
     ArrayList<String> cityList, quartierList;
     Spinner spinner, spinnerSuprimmeville, spinnerSuprimquertierVILL, spinnerSuprimquertierQuartier;
     ArrayAdapter<String> adapter;
+
+    TextInputLayout textInputLayout;
+
+    RadioGroup group;
+
+
 
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -57,6 +65,8 @@ public class AddVilleAndCartier extends AppCompatActivity {
         spinnerSuprimquertierQuartier = findViewById(R.id.spinnerQuartierDelet);
         spinnerSuprimquertierVILL = findViewById(R.id.spinnervillequartierdelet);
         suprimer = findViewById(R.id.btnSuprimer);
+        textInputLayout=findViewById(R.id.layoutville);
+        group=findViewById(R.id.group);
 
 
         cityList = new ArrayList<>();
@@ -67,6 +77,26 @@ public class AddVilleAndCartier extends AppCompatActivity {
 
         // Fetch and populate spinner with cities
         fetchVilles();
+        textInputLayout.setVisibility(View.GONE);
+
+        villeRadio.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                textInputLayout.setVisibility(View.VISIBLE);
+                group.setVisibility(View.GONE);
+
+            }
+        });
+        group.setVisibility(View.GONE);
+        quartierRadio.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                group.setVisibility(View.VISIBLE);
+                textInputLayout.setVisibility(View.GONE);
+            }
+
+        });
+
+
+
         // Button click listeners
         suprimerville.setChecked(true);
 
