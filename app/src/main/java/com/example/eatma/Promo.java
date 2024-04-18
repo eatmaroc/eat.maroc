@@ -1,6 +1,8 @@
 package com.example.eatma;
 
-public class Promo {
+import java.io.Serializable;
+
+public class Promo implements Serializable {
     private String title,type,prix,ville,quartier,whatsapp,description,adress,image;
 
     public Promo() {
