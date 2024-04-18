@@ -3,8 +3,10 @@ package com.example.eatma;
 import static android.content.Intent.getIntent;
 import static androidx.core.content.ContextCompat.startActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +30,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     Context context;
     ArrayList<PromoCarte> listPromo;
     DatabaseReference databaseReference;
+    Activity activity;
 
-    public MainAdapter(Context context, ArrayList<PromoCarte> listPromo) {
+    public MainAdapter(Context context, ArrayList<PromoCarte> listPromo,Activity activity) {
         this.context = context;
         this.listPromo = listPromo;
+        this.activity = activity;
     }
 
     @NonNull
@@ -72,7 +76,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
                             // Remove the item from the RecyclerView
                             removeItem(position);
                             Intent intent = new Intent(context, AfficherPromo.class);
+
                             context.startActivity(intent);
+                            activity.finish();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -84,7 +91,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
                     });
         });
         holder.modify.setOnClickListener(v -> {
-            // TODO: 4/17/2024 modifier promo on novelle activity
+            Intent intent = new Intent(context, ModifierPromo.class);
+            intent.putExtra("promo", (Parcelable) promo); // Pass the promo object to the new activity
+            context.startActivity(intent);
         });
 
 
@@ -112,7 +121,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         }
     }
     public void removeItem(int position) {
-        listPromo.remove(position);
-        notifyItemRemoved(position);
+        if (!listPromo.isEmpty() && position < listPromo.size()) {
+            listPromo.remove(position);
+            notifyItemRemoved(position);
+        }
+
     }
 }
