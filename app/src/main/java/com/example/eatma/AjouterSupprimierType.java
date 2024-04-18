@@ -34,6 +34,7 @@ public class AjouterSupprimierType extends AppCompatActivity {
     RadioGroup groupR,groupAjouterType,groupSupprimierType;
     DatabaseReference mDatabase;
     ArrayAdapter<String> spinnerAdapter;
+    Menu frame1;
 
 
 
@@ -64,6 +65,8 @@ public class AjouterSupprimierType extends AppCompatActivity {
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTypeAjouter.setAdapter(spinnerAdapter);
         populateSpinner();
+        frame1 = new Menu();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentType, frame1).commit();
 
 
         RBajouterType.setChecked(true);

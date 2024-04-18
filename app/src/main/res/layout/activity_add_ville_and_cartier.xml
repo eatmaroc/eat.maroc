@@ -8,6 +8,14 @@
     android:background="@drawable/gradient_background"
     tools:context=".AddVilleAndCartier">
 
+    <FrameLayout
+        android:id="@+id/fragmentaddvillecartier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
@@ -173,7 +181,6 @@
         android:id="@+id/textView6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:background="@color/white"
         android:gravity="center"
         android:text="ADD VILLE/QUARTIER"
@@ -181,7 +188,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/fragmentaddvillecartier" />
 
     <TextView
         android:id="@+id/textView7"
