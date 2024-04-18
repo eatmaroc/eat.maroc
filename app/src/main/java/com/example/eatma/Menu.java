@@ -89,7 +89,7 @@ Context context;
             @Override
             public void onClick(View v) {
                 if (context != null) {
-                  Intent intent=new Intent(context,MenuPage.class);
+                  Intent intent=new Intent(context, adminHome.class);
                   startActivity(intent);
                 }
             }

@@ -60,7 +60,7 @@ public class loginActivity extends AppCompatActivity {
                         progressBarLogIn.setVisibility(View.GONE);
                         // Sign in success, update UI with the signed-in user's information
                         FirebaseUser user = firebaseAuth.getCurrentUser();
-                        Intent intent=new Intent(this,adminHome.class);
+                        Intent intent=new Intent(this,AfficherPromo.class);
                         startActivity(intent);
                         finish();
                     } else {

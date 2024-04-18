@@ -33,6 +33,7 @@ public class AfficherPromo extends AppCompatActivity {
     ArrayList<String> cityList,quartierList;
     ArrayList<PromoCarte> listPromo;
     MainAdapter myAdapter;
+    Menu frame1;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -56,6 +57,10 @@ public class AfficherPromo extends AppCompatActivity {
         listPromo=new ArrayList<>();
         myAdapter=new MainAdapter(this,listPromo,this);
         recyclerView.setAdapter(myAdapter);
+
+        //newww
+        frame1 = new Menu();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment, frame1).commit();
 
         if (spinnerVille != null) {
             spinnerVille.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
