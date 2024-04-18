@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Eatma"
         tools:targetApi="31">
         <activity
-            android:name=".AddPromo"
+            android:name=".ModifierPromo"
             android:exported="false" />
         <activity
-            android:name=".AfficherPromo"
+            android:name=".adminHome"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Menu"
@@ -31,10 +34,10 @@
             android:name=".AddVilleAndCartier"
             android:exported="false" />
         <activity
-            android:name=".adminHome"
+            android:name=".AddPromo"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".AfficherPromo"
             android:exported="false" />
         <activity
             android:name=".loginActivity"
