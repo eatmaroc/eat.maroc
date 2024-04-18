@@ -2,8 +2,10 @@ package com.example.eatma;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ public class loginActivity extends AppCompatActivity {
     Button loginBtn;
     FirebaseAuth firebaseAuth;
 
+    ProgressBar progressBarLogIn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +26,17 @@ public class loginActivity extends AppCompatActivity {
     email=findViewById(R.id.email);
     password=findViewById(R.id.password);
     loginBtn=findViewById(R.id.loginBtn);
+    progressBarLogIn = findViewById(R.id.progressBarLogIn);
     firebaseAuth=FirebaseAuth.getInstance();
 
-    loginBtn.setOnClickListener( v->logIn());
+
+    loginBtn.setOnClickListener(v->{
+        loginBtn.setEnabled(false);
+        progressBarLogIn.setVisibility(View.VISIBLE);
+        logIn();
+    });
     }
+
 
     void logIn(){
         String userEmail = email.getText().toString().trim();
@@ -46,6 +56,8 @@ public class loginActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
+                        loginBtn.setEnabled(true);
+                        progressBarLogIn.setVisibility(View.GONE);
                         // Sign in success, update UI with the signed-in user's information
                         FirebaseUser user = firebaseAuth.getCurrentUser();
                         Intent intent=new Intent(this,adminHome.class);
@@ -53,6 +65,8 @@ public class loginActivity extends AppCompatActivity {
                         finish();
                     } else {
                         // If sign in fails, display a message to the user.
+                        loginBtn.setEnabled(true);
+                        progressBarLogIn.setVisibility(View.GONE);
                         Toast.makeText(loginActivity.this, "Authentication failed.",
                                 Toast.LENGTH_SHORT).show();
                     }
