@@ -30,6 +30,9 @@ FirebaseAuth auth = FirebaseAuth.getInstance();
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (auth.getCurrentUser()==null){
+                    Intent intent = new Intent(adminHome.this, loginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                     finish();
                 }
             }
@@ -57,7 +60,9 @@ FirebaseAuth auth = FirebaseAuth.getInstance();
     @Override
     public void onBackPressed() {
 
+
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
-        startActivity(intent);}
+        startActivity(intent);
+    }
     }
