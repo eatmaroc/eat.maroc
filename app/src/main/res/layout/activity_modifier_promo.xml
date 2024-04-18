@@ -6,7 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".AddPromo" >
+    android:orientation="vertical"
+    tools:context=".AddPromo">
+    <FrameLayout
+        android:id="@+id/fragmentmodifierpromo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -70,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Type" />
+
                 <Spinner
                     android:id="@+id/spinnerTypeModifierPromo"
                     android:layout_width="wrap_content"
@@ -177,7 +188,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
 
 
                 <TextView

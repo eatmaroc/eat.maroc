@@ -35,6 +35,7 @@ public class AddVilleAndCartier extends AppCompatActivity {
     ArrayList<String> cityList, quartierList;
     Spinner spinner, spinnerSuprimmeville, spinnerSuprimquertierVILL, spinnerSuprimquertierQuartier;
     ArrayAdapter<String> adapter;
+    Menu frame1;
 
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
@@ -57,6 +58,8 @@ public class AddVilleAndCartier extends AppCompatActivity {
         spinnerSuprimquertierQuartier = findViewById(R.id.spinnerQuartierDelet);
         spinnerSuprimquertierVILL = findViewById(R.id.spinnervillequartierdelet);
         suprimer = findViewById(R.id.btnSuprimer);
+        frame1 = new Menu();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentaddvillecartier, frame1).commit();
 
 
         cityList = new ArrayList<>();

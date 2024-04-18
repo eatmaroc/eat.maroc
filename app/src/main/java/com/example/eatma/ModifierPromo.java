@@ -48,7 +48,7 @@ public class ModifierPromo extends AppCompatActivity {
     Uri chosenImageUri;
     ProgressBar progressBar;
     ArrayAdapter<String> typeList;
-
+    Menu frame1;
 
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -78,7 +78,8 @@ public class ModifierPromo extends AppCompatActivity {
         quartierList=new ArrayList<>();
         storageReference = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("villes");
-
+        frame1 = new Menu();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragmentmodifierpromo, frame1).commit();
 
         typeList = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         typeList.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
