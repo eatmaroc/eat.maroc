@@ -3,7 +3,9 @@ package com.example.eatma;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class PromoCarte implements Parcelable {
+import java.io.Serializable;
+
+public class PromoCarte implements Parcelable, Serializable {
     String title;
     String type;
     String prix;

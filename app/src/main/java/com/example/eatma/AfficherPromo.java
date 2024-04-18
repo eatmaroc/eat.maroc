@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ public class AfficherPromo extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference().child("villes");
         recyclerView.setHasFixedSize(true);
         listPromo=new ArrayList<>();
-        myAdapter=new MainAdapter(this,listPromo);
+        myAdapter=new MainAdapter(this,listPromo,this);
         recyclerView.setAdapter(myAdapter);
 
         if (spinnerVille != null) {
