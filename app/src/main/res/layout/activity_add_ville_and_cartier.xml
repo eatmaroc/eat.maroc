@@ -5,7 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="16dp"
     android:background="@drawable/gradient_background"
     tools:context=".AddVilleAndCartier">
 
@@ -88,6 +87,7 @@
             android:theme="@style/RadioButtonStyle" />
 
         <RadioGroup
+            android:id="@+id/group"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -154,7 +154,8 @@
                         android:hint="Quartier"
                         android:inputType="text"
                         android:padding="8dp"
-                        android:textColorHint="@color/white" />
+                        android:textColor="@color/white"
+                        tools:textColorHint="@color/white" />
                 </com.google.android.material.textfield.TextInputLayout>
             </RadioGroup>
         </RadioGroup>
