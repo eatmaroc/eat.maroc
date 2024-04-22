@@ -2,24 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#D50000"
+    android:paddingStart="16dp"
     tools:context=".Menu">
 
     <!-- TODO: Update blank fragment layout -->
 
 
-    <ImageView
-        android:id="@+id/imgeat"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        android:layout_weight="1"
-        android:src="@drawable/eat" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="Admin"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
 
-        <Space
-            android:layout_width="274dp"
-            android:layout_height="match_parent" />
+    <Space
+        android:layout_width="250dp"
+        android:layout_height="match_parent" />
 
     <ImageView
         android:id="@+id/imgmenu"
@@ -27,5 +30,5 @@
         android:layout_height="46dp"
         android:layout_gravity="center_vertical"
         android:src="@drawable/baseline_density_medium_24" />
-    </LinearLayout>
+</LinearLayout>
 
