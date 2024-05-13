@@ -3,10 +3,18 @@ package com.example.eatma;
 import java.io.Serializable;
 
 public class Promo implements Serializable {
-    private String title,type,prix,ville,quartier,whatsapp,description,adress,image;
+    private String title,type,prix,ville,quartier,whatsapp,description,adress,image,location;
 
     public Promo() {
 
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getTitle() {

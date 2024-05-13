@@ -3,6 +3,7 @@ package com.example.eatma;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -20,6 +21,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,13 +33,14 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddPromo extends AppCompatActivity {
-        EditText title, prix, whatsapp, description, adress;
+        EditText title, prix, whatsapp, description, adress,location;
         DatabaseReference databaseReference,mDatabase;
         Spinner spinnerVille, spinnerQuartier,spinnerTypeAddPromo;
         Button Ajouter;
@@ -67,6 +73,7 @@ public class AddPromo extends AppCompatActivity {
                 spinnerQuartier = findViewById(R.id.quartierAdd);
                 Ajouter = findViewById(R.id.btnAjouterProme);
                 addpic = findViewById(R.id.imgInput);
+                location=findViewById(R.id.inputLocation);
                 mDatabase = FirebaseDatabase.getInstance().getReference().child("list_type");
                 cityList=new ArrayList<>();
                 quartierList=new ArrayList<>();
@@ -129,6 +136,7 @@ public class AddPromo extends AppCompatActivity {
                                         promo.setAdress(adress.getText().toString());
                                         promo.setVille(spinnerVille.getSelectedItem().toString());
                                         promo.setQuartier(spinnerQuartier.getSelectedItem().toString());
+                                        promo.setLocation(location.getText().toString());
                                         uploadImage(chosenImageUri);
 
                                 } else {
@@ -172,6 +180,13 @@ public class AddPromo extends AppCompatActivity {
                                 Ajouter.setEnabled(true);
                                 Toast.makeText(AddPromo.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });}
+
+
+
+
+
+
+
         private void addpromo(Promo promo) {
                 String selectedVille = promo.getVille();
                 String selectedQuartier = promo.getQuartier();

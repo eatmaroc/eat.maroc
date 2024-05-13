@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:layout_weight="1"
-        android:src="@drawable/eat" />
+        android:src="@drawable/logoeatpromo" />
 
         <Space
             android:layout_width="274dp"
